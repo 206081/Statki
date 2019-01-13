@@ -45,16 +45,16 @@ function removePositionFromArray(positionArray, x, y) {
 var ship = null;
 var shipArray = [];
 var currentShip = 0;
-var ID_SHIP_4_MAST = { id: 0, length: 4, name: "Czteromasztowiec" };
-var ID_SHIP_3_MAST_1 = { id: 1, length: 3, name: "Trojmasztowiec" };
-var ID_SHIP_3_MAST_2 = { id: 2, length: 3, name: "Trojmasztowiec" };
-var ID_SHIP_2_MAST_1 = { id: 3, length: 2, name: "Dwumasztowiec" };
-var ID_SHIP_2_MAST_2 = { id: 4, length: 2, name: "Dwumasztowiec" };
-var ID_SHIP_2_MAST_3 = { id: 5, length: 2, name: "Dwumasztowiec" };
-var ID_SHIP_1_MAST_1 = { id: 6, length: 1, name: "Jednomasztowiec" };
-var ID_SHIP_1_MAST_2 = { id: 7, length: 1, name: "Jednomasztowiec" };
-var ID_SHIP_1_MAST_3 = { id: 8, length: 1, name: "Jednomasztowiec" };
-var ID_SHIP_1_MAST_4 = { id: 9, length: 1, name: "Jednomasztowiec" };
+var ID_SHIP_4_MAST = { id: 0, length: 4, name: "4-segments ship" };
+var ID_SHIP_3_MAST_1 = { id: 1, length: 3, name: "3-segments ship" };
+var ID_SHIP_3_MAST_2 = { id: 2, length: 3, name: "3-segments ship" };
+var ID_SHIP_2_MAST_1 = { id: 3, length: 2, name: "2-segments ship" };
+var ID_SHIP_2_MAST_2 = { id: 4, length: 2, name: "2-segments ship" };
+var ID_SHIP_2_MAST_3 = { id: 5, length: 2, name: "2-segments ship" };
+var ID_SHIP_1_MAST_1 = { id: 6, length: 1, name: "1-segment ship" };
+var ID_SHIP_1_MAST_2 = { id: 7, length: 1, name: "1-segment ship" };
+var ID_SHIP_1_MAST_3 = { id: 8, length: 1, name: "1-segment ship" };
+var ID_SHIP_1_MAST_4 = { id: 9, length: 1, name: "1-segment ship" };
 var availableShips = [ID_SHIP_4_MAST, ID_SHIP_3_MAST_1, ID_SHIP_3_MAST_2, ID_SHIP_2_MAST_1, ID_SHIP_2_MAST_2,
     ID_SHIP_2_MAST_3, ID_SHIP_1_MAST_1, ID_SHIP_1_MAST_2, ID_SHIP_1_MAST_3, ID_SHIP_1_MAST_4];
 
@@ -102,10 +102,10 @@ function shot() {
 
 function shipCreationBtnClick() {
     if (ship == null) {
-        alert("Nie utworzyles statku!");
+        alert("You didn't create ship!");
     } else {
         if (ship.canCreateMast()) {
-            alert("Brakuje: " + (ship.length - ship.positionArray.length) + " masztu(ow)!")
+            alert("There is " + (ship.length - ship.positionArray.length) + " missing segments!")
         } else {
             // Accepting ship
             shipArray.push(ship);
@@ -113,16 +113,16 @@ function shipCreationBtnClick() {
             currentShip++;
             if (currentShip == availableShips.length) {
                 // No more ships to set, start the game
-                $("#currentAction").text("Oczekiwanie na drugiego gracza...");
+                $("#currentAction").text("Waiting for another player...");
                 $("#shipCreationBtn").css("display", "none");
                 setTimeout(function () {
                     $("#overlay").remove();
-                    $("#currentAction").text("Wybierz pole do ataku:");
+                    $("#currentAction").text("Choose box to attack!");
                     $("#shotTilePositionInput").css("display", "flex");
                     $("#shotBtn").css("display", "flex");
                 }, 2000);
             } else {
-                $("#currentAction").text("Ustaw: " + availableShips[currentShip].name);
+                $("#currentAction").text("Set: " + availableShips[currentShip].name);
             }
             $("#shipCreationBtn").removeClass("btn");
             $("#shipCreationBtn").addClass("btnDisabled");
@@ -160,7 +160,7 @@ function canCreateShipInTile(tile) {
 $(document).ready(function ($) {
     createBoard();
 
-    $("#currentAction").text("Ustaw: " + availableShips[currentShip].name);
+    $("#currentAction").text("Set: " + availableShips[currentShip].name);
     $("#shotTilePositionInput").css("display", "none");
     $("#shotBtn").css("display", "none");
     var tiles = $(".playerTile");

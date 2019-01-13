@@ -1,8 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
-<div>
-	GRA
-</div>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--===============================================================================================-->	
+    <script src="js/game_script.js"></script>
+<!--===============================================================================================-->	
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="css/landscape.css">
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="css/portrait.css">
+<!--===============================================================================================-->	
+    <title>BattleShip</title>
+</head>
+
+<body background="images/background.png">
+    <h1>BattleShip<img src="images/logos/logo.png" alt="logo"style="width:116px;height:72px;"></h1>
+	
+    <div id="menu">
+        <div id="currentAction" class="text"></div>
+        <input id="shotTilePositionInput" class="text" name="fname">
+        <button id="shipCreationBtn" class="btnDisabled" type="button" onclick="shipCreationBtnClick()">Apply</button>
+        <button id="shotBtn" class="btn" type="button" onclick="shot()">Shot</button>
+    </div>
+
+    <div id="game">
+        <div id="boardWrapper">
+            <div id="board"></div>
+            <div id="opponentBoard">
+                <div id="overlay"></div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
+<footer>
+
+</footer>
+
 </html>

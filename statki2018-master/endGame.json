@@ -1,6 +1,0 @@
-// Packet for endgame, winners: "you" or "opponent"
-
-{
-  "packetName" : "endGame",
-  "winner" : "you"
-}
