@@ -1,0 +1,5 @@
+server/node_modules/
+server/db/games.db
+server/db/users.db
+server/player1.js
+server/player2.js
